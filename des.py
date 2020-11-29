@@ -1,87 +1,88 @@
 import sys
 import sqlite3
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QWidget, QPushButton, QLineEdit, QInputDialog, QApplication
+from PyQt5.QtWidgets import QWidget, QPushButton, QLineEdit, QInputDialog, QApplication, QLabel
 
 
 class Ui_MainWindow(object):
     def __init__(self):
         super().__init__()
-        self.con = sqlite3.connect("book_db.sqlite")
+        self.con = sqlite3.connect("book.db")
         cur = self.con.cursor()
-        self.result1 = """SELECT * FROM Goro WHERE name = "Овен" and kind_of = "Гороскоп на здоровье"""
-        self.result1.format('Овен', 'Гороскоп на удачу')
-        self.result2 = """SELECT * FROM Goro WHERE name = "Телец" and kind_of = "Гороскоп на здоровье"""
-        self.result2.format('Овен', 'Гороскоп на удачу')
-        self.result3 = """SELECT * FROM Goro WHERE name = "Весы" and kind_of = "Гороскоп на здоровье"""
-        self.result3.format('Овен', 'Гороскоп на удачу')
-        self.result4 = """SELECT * FROM Goro WHERE name = "Скорпион" and kind_of = "Гороскоп на здоровье"""
-        self.result4.format('Овен', 'Гороскоп на удачу')
-        self.result5 = """SELECT * FROM Goro WHERE name = "Близнецы" and kind_of = "Гороскоп на здоровье"""
-        self.result5.format('Овен', 'Гороскоп на удачу')
-        self.result6 = """SELECT * FROM Goro WHERE name = "Девы" and kind_of = "Гороскоп на здоровье"""
-        self.result6.format('Овен', 'Гороскоп на удачу')
-        self.result7 = """SELECT * FROM Goro WHERE name = "Стрелец" and kind_of = "Гороскоп на здоровье"""
-        self.result7.format('Овен', 'Гороскоп на удачу')
-        self.result8 = """SELECT * FROM Goro WHERE name = "Козерог" and kind_of = "Гороскоп на здоровье"""
-        self.result8.format('Овен', 'Гороскоп на удачу')
-        self.result9 = """SELECT * FROM Goro WHERE name = "Лев" and kind_of = "Гороскоп на здоровье"""
-        self.result9.format('Овен', 'Гороскоп на удачу')
-        self.result10 = """SELECT * FROM Goro WHERE name = "Рак" and kind_of = "Гороскоп на здоровье"""
-        self.result10.format('Овен', 'Гороскоп на удачу')
-        self.result11 = """SELECT * FROM Goro WHERE name = "Водолей" and kind_of = "Гороскоп на здоровье"""
-        self.result11.format('Овен', 'Гороскоп на удачу')
-        self.result12 = """SELECT * FROM Goro WHERE name = "Рыбы" and kind_of = "Гороскоп на здоровье"""
-        self.result12.format('Овен', 'Гороскоп на удачу')
-        self.result13 = """SELECT * FROM Goro WHERE name = "Овен" and kind_of = "Гороскоп на карьеру"""
-        self.result13.format('Овен', 'Гороскоп на удачу')
-        self.result14 = """SELECT * FROM Goro WHERE name = "Телец" and kind_of = "Гороскоп на карьеру"""
-        self.result14.format('Овен', 'Гороскоп на удачу')
-        self.result15 = """SELECT * FROM Goro WHERE name = "Весы" and kind_of = "Гороскоп на карьеру"""
-        self.result15.format('Овен', 'Гороскоп на удачу')
-        self.result16 = """SELECT * FROM Goro WHERE name = "Скорпион" and kind_of = "Гороскоп на карьеру"""
-        self.result16.format('Овен', 'Гороскоп на удачу')
-        self.result17 = """SELECT * FROM Goro WHERE name = "Близнецы" and kind_of = "Гороскоп на карьеру"""
-        self.result17.format('Овен', 'Гороскоп на удачу')
-        self.result18 = """SELECT * FROM Goro WHERE name = "Девы" and kind_of = "Гороскоп на карьеру"""
-        self.result18.format('Овен', 'Гороскоп на удачу')
-        self.result19 = """SELECT * FROM Goro WHERE name = "Стрелец" and kind_of = "Гороскоп на карьеру"""
-        self.result19.format('Овен', 'Гороскоп на удачу')
-        self.result20 = """SELECT * FROM Goro WHERE name = "Козерог" and kind_of = "Гороскоп на карьеру"""
-        self.result20.format('Овен', 'Гороскоп на удачу')
-        self.result21 = """SELECT * FROM Goro WHERE name = "Лев" and kind_of = "Гороскоп на карьеру"""
-        self.result21.format('Овен', 'Гороскоп на удачу')
-        self.result22 = """SELECT * FROM Goro WHERE name = "Рак" and kind_of = "Гороскоп на карьеру"""
-        self.result22.format('Овен', 'Гороскоп на удачу')
-        self.result23 = """SELECT * FROM Goro WHERE name = "Водолей" and kind_of = "Гороскоп на карьеру"""
-        self.result23.format('Овен', 'Гороскоп на удачу')
-        self.result24 = """SELECT * FROM Goro WHERE name = "Рыбы" and kind_of = "Гороскоп на карьеру"""
-        self.result24.format('Овен', 'Гороскоп на удачу')
-        self.result25 = """SELECT * FROM Goro WHERE name = "Овен" and kind_of = "Гороскоп на любовь"""
-        self.result25.format('Овен', 'Гороскоп на удачу')
-        self.result26 = """SELECT * FROM Goro WHERE name = "Телец" and kind_of = "Гороскоп на карьеру"""
-        self.result26.format('Овен', 'Гороскоп на удачу')
-        self.result27 = """SELECT * FROM Goro WHERE name = "Весы" and kind_of = "Гороскоп на карьеру"""
-        self.result27.format('Овен', 'Гороскоп на удачу')
-        self.result28 = """SELECT * FROM Goro WHERE name = "Скорпион" and kind_of = "Гороскоп на карьеру"""
-        self.result28.format('Овен', 'Гороскоп на удачу')
-        self.result29 = """SELECT * FROM Goro WHERE name = "Близнецы" and kind_of = "Гороскоп на карьеру"""
-        self.result29.format('Овен', 'Гороскоп на удачу')
-        self.result30 = """SELECT * FROM Goro WHERE name = "Девы" and kind_of = "Гороскоп на карьеру"""
-        self.result30.format('Овен', 'Гороскоп на удачу')
-        self.result31 = """SELECT * FROM Goro WHERE name = "Стрелец" and kind_of = "Гороскоп на карьеру"""
-        self.result31.format('Овен', 'Гороскоп на удачу')
-        self.result32 = """SELECT * FROM Goro WHERE name = "Козерог" and kind_of = "Гороскоп на карьеру"""
-        self.result32.format('Овен', 'Гороскоп на удачу')
-        self.result33 = """SELECT * FROM Goro WHERE name = "Лев" and kind_of = "Гороскоп на карьеру"""
-        self.result33.format('Овен', 'Гороскоп на удачу')
-        self.result34 = """SELECT * FROM Goro WHERE name = "Рак" and kind_of = "Гороскоп на карьеру"""
-        self.result34.format('Овен', 'Гороскоп на удачу')
-        self.result35 = """SELECT * FROM Goro WHERE name = "Водолей" and kind_of = "Гороскоп на карьеру"""
-        self.result35.format('Овен', 'Гороскоп на удачу')
-        self.result36 = """SELECT * FROM Goro WHERE name = "Рыбы" and kind_of = "Гороскоп на карьеру"""
-        self.result36.format('Овен', 'Гороскоп на удачу')
+        self.result1 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 25""").fetchone()
+        self.result2 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 26""").fetchone()
+        self.result3 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 27""").fetchone()
+        self.result4 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 28""").fetchone()
+        self.result5 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 29""").fetchone()
+        self.result6 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 30""").fetchone()
+        self.result7 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 31""").fetchone()
+        self.result8 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 32""").fetchone()
+        self.result9 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 33""").fetchone()
+        self.result10 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 34""").fetchone()
+        self.result11 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 35""").fetchone()
+        self.result12 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 36""").fetchone()
+        self.result13 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 13""").fetchone()
+        self.result14 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 14""").fetchone()
+        self.result15 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 15""").fetchone()
+        self.result16 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 16""").fetchone()
+        self.result17 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 17""").fetchone()
+        self.result18 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 18""").fetchone()
+        self.result19 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 19""").fetchone()
+        self.result20 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 20""").fetchone()
+        self.result21 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 21""").fetchone()
+        self.result22 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 22""").fetchone()
+        self.result23 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 23""").fetchone()
+        self.result24 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 24""").fetchone()
+        self.result25 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 1""").fetchone()
+        self.result26 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 2""").fetchone()
+        self.result27 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 3""").fetchone()
+        self.result28 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 4""").fetchone()
+        self.result29 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 5""").fetchone()
+        self.result30 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 6""").fetchone()
+        self.result31 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 7""").fetchone()
+        self.result32 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 8""").fetchone()
+        self.result33 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 9""").fetchone()
+        self.result34 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 10""").fetchone()
+        self.result35 =cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 11""").fetchone()
+        self.result36 = cur.execute("""SELECT prediction FROM Goro
+            WHERE id = 12""").fetchone()
 
 
     def setupUi(self, MainWindow):
@@ -163,117 +164,153 @@ class Ui_MainWindow(object):
 
 
     def select_data(self):
-        if self.karierbutton.Ischeked():
+        if self.karierbutton.isChecked():
             if str(self.zadiakbox.currentText()) == 'Овен':
-                self.second_form = SecondForm(self, self.result13)
-                self.second_form.show()
+                for elem in self.result13:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Телец':
-                self.second_form = SecondForm(self, self.result14)
-                self.second_form.show()
+                for elem in self.result14:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Весы':
-                self.second_form = SecondForm(self, self.result15)
-                self.second_form.show()
+                for elem in self.result15:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Скорпион':
-                self.second_form = SecondForm(self, self.result16)
-                self.second_form.show()
+                for elem in self.result16:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Близнецы':
-                self.second_form = SecondForm(self, self.result17)
-                self.second_form.show()
+                for elem in self.result17:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Девы':
-                self.second_form = SecondForm(self, self.result18)
-                self.second_form.show()
+                for elem in self.result18:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Стрелец':
-                self.second_form = SecondForm(self, self.result19)
-                self.second_form.show()
+                for elem in self.result19:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Козерог':
-                self.second_form = SecondForm(self, self.result20)
-                self.second_form.show()
+                for elem in self.result20:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Лев':
-                self.second_form = SecondForm(self, self.result21)
-                self.second_form.show()
+                for elem in self.result21:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Рак':
-                self.second_form = SecondForm(self, self.result22)
-                self.second_form.show()
+                for elem in self.result22:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Водолей':
-                self.second_form = SecondForm(self, self.result23)
-                self.second_form.show()
+                for elem in self.result23:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Рыбы':
-                self.second_form = SecondForm(self, self.result24)
-                self.second_form.show()
-        elif healthbutton.Ischeked():
+                for elem in self.result24:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
+        elif self.healthbutton.isChecked():
             if str(self.zadiakBox.currentText()) == 'Овен':
-                self.second_form = SecondForm(self, self.result1)
-                self.second_form.show()
+                for elem in self.result1:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Телец':
-                self.second_form = SecondForm(self, self.result2)
-                self.second_form.show()
+                for elem in self.result2:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Весы':
-                self.second_form = SecondForm(self, self.result3)
-                self.second_form.show()
+                for elem in self.result3:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Скорпион':
-                self.second_form = SecondForm(self, self.result4)
-                self.second_form.show()
+                for elem in self.result4:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Близнецы':
-                self.second_form = SecondForm(self, self.result5)
-                self.second_form.show()
+                for elem in self.result5:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Девы':
-                self.second_form = SecondForm(self, self.result6)
-                self.second_form.show()
+                for elem in self.result6:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Стрелец':
-                self.second_form = SecondForm(self, self.result7)
-                self.second_form.show()
+                for elem in self.result7:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Козерог':
-                self.second_form = SecondForm(self, self.result8)
-                self.second_form.show()
+                for elem in self.result8:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Лев':
-                self.second_form = SecondForm(self, self.result9)
-                self.second_form.show()
+                for elem in self.result9:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Рак':
-                self.second_form = SecondForm(self, self.result10)
-                self.second_form.show()
+                for elem in self.result10:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Водолей':
-                self.second_form = SecondForm(self, self.result11)
-                self.second_form.show()
+                for elem in self.result11:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Рыбы':
-                self.second_form = SecondForm(self, self.result12)
-                self.second_form.show()
-        elif lubovbutton.Ischeked():
+                for elem in self.result12:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
+        elif self.lubovbutton.Ischeked():
             if str(self.zadiakBox.currentText()) == 'Овен':
-                self.second_form = SecondForm(self, self.result25)
-                self.second_form.show()
+                for elem in self.result25:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Телец':
-                self.second_form = SecondForm(self, self.result26)
-                self.second_form.show()
+                for elem in self.result26:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Весы':
-                self.second_form = SecondForm(self, self.result27)
-                self.second_form.show()
+                for elem in self.result27:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Скорпион':
-                self.second_form = SecondForm(self, self.result28)
-                self.second_form.show()
+                for elem in self.result28:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Близнецы':
-                self.second_form = SecondForm(self, self.result29)
-                self.second_form.show()
+                for elem in self.result29:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Девы':
-                self.second_form = SecondForm(self, self.result30)
-                self.second_form.show()
+                for elem in self.result30:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Стрелец':
-                self.second_form = SecondForm(self, self.result31)
-                self.second_form.show()
+                for elem in self.result31:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Козерог':
-                self.second_form = SecondForm(self, self.result32)
-                self.second_form.show()
+                for elem in self.result32:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Лев':
-                self.second_form = SecondForm(self, self.result33)
-                self.second_form.show()
+                for elem in self.result33:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Рак':
-                self.second_form = SecondForm(self, self.result34)
-                self.second_form.show()
+                for elem in self.result34:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Водолей':
-                self.second_form = SecondForm(self, self.result35)
-                self.second_form.show()
+                for elem in self.result35:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
             elif str(self.zadiakBox.currentText()) == 'Рыбы':
-                self.second_form = SecondForm(self, self.result36)
-                self.second_form.show()
+                for elem in self.result36:
+                    self.second_form = SecondForm(self, elem)
+                    self.second_form.show()
 
 
     def retranslateUi(self, MainWindow):
